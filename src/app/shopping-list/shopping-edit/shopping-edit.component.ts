@@ -32,4 +32,5 @@ export class ShoppingEditComponent implements OnInit {
   onReset(){
     console.log('onAddingIngredient() fired.');
   }
+
 }

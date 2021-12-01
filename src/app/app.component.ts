@@ -7,10 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'recipe-app';
-  selectedMenu:string = 'recipes';
 
-  onSelectedMenu(selectedMenu:string){
-    console.log('Selected : '+selectedMenu);
-    this.selectedMenu = selectedMenu;
-  }
 }
