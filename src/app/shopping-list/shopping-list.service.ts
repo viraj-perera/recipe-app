@@ -3,8 +3,13 @@ import { Ingredient } from "../shared/ingredient.model";
 
 export class ShoppingListService {
 
+    deleteIngredient(editedItemIndex: number) {
+      this.ingredients.splice(editedItemIndex, 1);
+      this.ingredientsChanged.next(this.ingredients.slice());
+    }
 
     ingredientsChanged = new Subject<Ingredient[]>();
+    startedEditing = new Subject<number>();
 
     private   ingredients:Ingredient[] = [
         new Ingredient('Apples', 5),
@@ -25,5 +30,13 @@ export class ShoppingListService {
         this.ingredients.push(...ingredients);
         this.ingredientsChanged.next(this.ingredients.slice());
     }
+
+    getIngredient(index: number): Ingredient {
+        return this.ingredients[index];
+      }
     
+    updateIngredient(index:number, updatedIngredient:Ingredient){
+        this.ingredients[index] = updatedIngredient;
+        this.ingredientsChanged.next(this.ingredients.slice());
+    }
 }

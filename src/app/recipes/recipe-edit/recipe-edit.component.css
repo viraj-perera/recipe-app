@@ -1,0 +1,8 @@
+button {
+    margin-right: 5px;
+}
+
+input.ng-invalid.ng-untoutched, 
+textarea.ng-invalid.ng-untoutched  {
+    border: 1px solid red;
+}
