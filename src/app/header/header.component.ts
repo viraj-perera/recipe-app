@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from "@angular/core";
+import { Subscription } from "rxjs";
+import { AuthService } from "../auth/auth.service";
 import { DataStorageService } from "../shared/data-storage.service";
 
 @Component({
@@ -7,15 +9,31 @@ import { DataStorageService } from "../shared/data-storage.service";
     styleUrls: ['./header.component.css']
     
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
 
-    constructor(private dataStorageService:DataStorageService){}
+    userSub: Subscription;
+    isAuthenticated:boolean = false;
+
+    constructor(private dataStorageService:DataStorageService, private authService:AuthService){}
+
+    ngOnInit(): void {
+        this.userSub = this.authService.user.subscribe( (user) => {
+            this.isAuthenticated = !!user;
+        });
+    }
+    ngOnDestroy(): void {
+        throw new Error("Method not implemented.");
+    }
 
     onSaveData(){
         this.dataStorageService.storeRecipes();
     }
 
     onFetchData(){
-        this.dataStorageService.fetchRecipes();
+        this.dataStorageService.fetchRecipes().subscribe();
+    }
+
+    onLogout(){
+        this.authService.logout();
     }
 }

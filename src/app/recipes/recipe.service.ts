@@ -13,22 +13,24 @@ export class RecipeService {
       return this.recipes[index];
     }
 
-    private recipes:Recipe[] = [
-        new Recipe('Tasty Schnitzel', 
-        'A super taste schnitzel - worth for price!', 
-        'https://cdn.pixabay.com/photo/2019/03/25/20/20/schnitzel-4081269_960_720.jpg', 
-        [
-            new Ingredient('Meat', 1),
-            new Ingredient('French fries', 15),
-        ]),
-        new Recipe('A Big fat burger', 
-        'What else do you need to say?', 
-        'https://cdn.pixabay.com/photo/2019/11/09/17/02/burger-4614022_960_720.jpg', 
-        [
-            new Ingredient('Bun', 2),
-            new Ingredient('Meat', 1),
-        ])
-      ];
+    private recipes: Recipe[] = [];
+
+    // private recipes:Recipe[] = [
+    //     new Recipe('Tasty Schnitzel', 
+    //     'A super taste schnitzel - worth for price!', 
+    //     'https://cdn.pixabay.com/photo/2019/03/25/20/20/schnitzel-4081269_960_720.jpg', 
+    //     [
+    //         new Ingredient('Meat', 1),
+    //         new Ingredient('French fries', 15),
+    //     ]),
+    //     new Recipe('A Big fat burger', 
+    //     'What else do you need to say?', 
+    //     'https://cdn.pixabay.com/photo/2019/11/09/17/02/burger-4614022_960_720.jpg', 
+    //     [
+    //         new Ingredient('Bun', 2),
+    //         new Ingredient('Meat', 1),
+    //     ])
+    //   ];
 
     
     constructor(private slService:ShoppingListService){}
