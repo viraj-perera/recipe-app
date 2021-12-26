@@ -1,5 +1,5 @@
-import { templateJitUrl } from "@angular/compiler";
 import { Component, EventEmitter, Output } from "@angular/core";
+import { DataStorageService } from "../shared/data-storage.service";
 
 @Component({
     selector:'app-header',
@@ -9,13 +9,13 @@ import { Component, EventEmitter, Output } from "@angular/core";
 })
 export class HeaderComponent {
 
-    @Output() menuSelected = new EventEmitter<string>();
+    constructor(private dataStorageService:DataStorageService){}
 
-    selectedMenu:string;
+    onSaveData(){
+        this.dataStorageService.storeRecipes();
+    }
 
-    // onSelectMenu(menuItem:string){
-    //     console.log('Fired Header: onSelectMenu');
-    //     this.menuSelected.emit(menuItem);
-    // }
-
+    onFetchData(){
+        this.dataStorageService.fetchRecipes();
+    }
 }
